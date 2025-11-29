@@ -32,8 +32,10 @@ namespace IkinciElEsya.Controllers
                 {
                     UserName = model.Email,
                     Email = model.Email,
-                    FirstName = model.FirstName ?? "",
-                    LastName = model.LastName ?? ""
+                    // YENİ ALANLARI EŞLEŞTİRİYORUZ:
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    City = model.City
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);

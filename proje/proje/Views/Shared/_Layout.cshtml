@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<IkinciElEsya.Models.ApplicationUser> UserManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -7,6 +9,8 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/proje.styles.css" asp-append-version="true" />
+    @using Microsoft.AspNetCore.Identity
+    @inject UserManager<IkinciElEsya.Models.ApplicationUser> UserManager
 </head>
 <body>
     <header>
@@ -49,8 +53,12 @@
                     <ul class="navbar-nav ms-auto">
                         @if (User.Identity.IsAuthenticated)
                         {
+                            var currentUser = await UserManager.GetUserAsync(User);
+
                             <li class="nav-item">
-                                <a class="nav-link text-dark" href="#">Merhaba, @User.Identity.Name</a>
+                                <a class="nav-link text-dark fw-bold" asp-controller="Account" asp-action="Profile">
+                                    Merhaba, @currentUser?.FirstName @currentUser?.LastName
+                                </a>
                             </li>
                             <li class="nav-item">
                                 <form class="form-inline" asp-controller="Account" asp-action="Logout">
@@ -60,12 +68,8 @@
                         }
                         else
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Giriş Yap</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Kayıt Ol</a>
-                            </li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Giriş Yap</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Kayıt Ol</a></li>
                         }
                     </ul>
                 </div>
