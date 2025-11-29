@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "yCKgJvTmt5BstxubJm0WPzdkvpTMyrQy3N53kbkm0uU=",
+  "Hash": "5cVX1KjlxZL7GuoEMhPeyqws16PKBGv0VwF4hp02DQM=",
   "Source": "IkinciElEsya",
   "BasePath": "_content/IkinciElEsya",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\wwwroot\\img\\0da4d832-afce-41ff-bead-7cb0c57ab3ef_WIN_20231204_18_51_51_Pro.jpg",
+      "SourceId": "IkinciElEsya",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\wwwroot\\",
+      "BasePath": "_content/IkinciElEsya",
+      "RelativePath": "img/0da4d832-afce-41ff-bead-7cb0c57ab3ef_WIN_20231204_18_51_51_Pro.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\0da4d832-afce-41ff-bead-7cb0c57ab3ef_WIN_20231204_18_51_51_Pro.jpg"
     },
     {
       "Identity": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\wwwroot\\js\\site.js",

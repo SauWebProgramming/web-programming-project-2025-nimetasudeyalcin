@@ -33,9 +33,9 @@ namespace IkinciElEsya.Repositories.Concrete
 
         public List<Product> GetAllProducts()
         {
-            // Include(x => x.Category) ÇOK ÖNEMLİ!
-            // Bunu yapmazsan ürünler gelir ama hangi kategoride oldukları boş gelir.
-            return _context.Products.Include(x => x.Category).Include(x => x.SellerId).ToList();
+            // SellerId zaten ürünün içinde bir sütun olduğu için otomatik gelir.
+            // Sadece Category tablosunu Include etmemiz yeterli.
+            return _context.Products.Include(x => x.Category).ToList();
         }
 
         public Product GetProductById(int id)
