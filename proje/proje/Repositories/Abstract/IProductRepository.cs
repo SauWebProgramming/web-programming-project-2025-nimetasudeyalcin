@@ -9,5 +9,6 @@ namespace IkinciElEsya.Repositories.Abstract
         void AddProduct(Product product); // Ürün ekle
         void UpdateProduct(Product product); // Güncelle
         void DeleteProduct(int id); // Sil
+        List<Product> GetProductsByCategoryId(int categoryId);
     }
 }

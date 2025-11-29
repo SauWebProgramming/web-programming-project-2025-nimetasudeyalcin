@@ -48,5 +48,12 @@ namespace IkinciElEsya.Repositories.Concrete
             _context.Products.Update(product);
             _context.SaveChanges();
         }
+        public List<Product> GetProductsByCategoryId(int categoryId)
+        {
+            return _context.Products
+                .Include(x => x.Category)
+                .Where(x => x.CategoryId == categoryId) // Filtreleme burası
+                .ToList();
+        }
     }
 }

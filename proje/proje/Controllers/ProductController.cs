@@ -25,11 +25,25 @@ namespace IkinciElEsya.Controllers
             _userManager = userManager;
         }
 
-        // 1. LİSTELEME (HERKES GÖREBİLİR)
-        public IActionResult Index()
+        // 1. LİSTELEME VE FİLTRELEME
+        public IActionResult Index(int? categoryId)
         {
-            var products = _productRepository.GetAllProducts();
-            return View(products);
+            // Sidebar'da kategorileri listelemek için veriyi gönderiyoruz
+            ViewBag.Categories = _categoryRepository.GetAllCategories();
+            ViewBag.SelectedCategoryId = categoryId; // Hangi kategori seçili bilsin
+
+            if (categoryId.HasValue)
+            {
+                // Filtreli getir
+                var products = _productRepository.GetProductsByCategoryId(categoryId.Value);
+                return View(products);
+            }
+            else
+            {
+                // Hepsini getir
+                var products = _productRepository.GetAllProducts();
+                return View(products);
+            }
         }
 
         // 2. EKLEME SAYFASI

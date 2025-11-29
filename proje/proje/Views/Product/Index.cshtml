@@ -1,46 +1,63 @@
 ﻿@model List<IkinciElEsya.Models.Product>
 
 <div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2>Ürün Listesi</h2>
-        <a asp-action="Create" class="btn btn-success">+ İlan Ver</a>
-    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group">
+                <a asp-action="Index" asp-route-categoryId=""
+                   class="list-group-item list-group-item-action @(ViewBag.SelectedCategoryId == null ? "active" : "")">
+                    Tüm Ürünler
+                </a>
+                @foreach (var cat in ViewBag.Categories)
+                {
+                    <a asp-action="Index" asp-route-categoryId="@cat.Id"
+                       class="list-group-item list-group-item-action @(ViewBag.SelectedCategoryId == cat.Id ? "active" : "")">
+                        @cat.Name
+                    </a>
+                }
+            </div>
+            <div class="mt-3">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a asp-action="Create" class="btn btn-success w-100">+ İlan Ver</a>
+                }
+            </div>
+        </div>
 
-    <table class="table table-hover align-middle">
-        <thead class="table-dark">
-            <tr>
-                <th>Görsel</th>
-                <th>Ürün Adı</th>
-                <th>Kategori</th>
-                <th>Fiyat</th>
-                <th>İşlemler</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
+        <div class="col-md-9">
+            <h2>Ürün Listesi</h2>
+            <hr />
+
+            @if (Model.Count == 0)
             {
-                <tr>
-                    <td>
-                        @if (!string.IsNullOrEmpty(item.ImageUrl))
-                        {
-                            <img src="@item.ImageUrl" width="80" height="80" style="object-fit:cover; border-radius:5px;" />
-                        }
-                        else
-                        {
-                            <span>Resim Yok</span>
-                        }
-                    </td>
-                    <td>@item.Title</td>
-                    <td>
-                        <span class="badge bg-info text-dark">@item.Category?.Name</span>
-                    </td>
-                    <td>@item.Price.ToString("C2")</td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Düzenle</a>
-                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger" onclick="return confirm('Bu ürünü silmek istediğinize emin misiniz?');">Sil</a>
-                    </td>
-                </tr>
+                <div class="alert alert-warning">Bu kategoride henüz ürün yok.</div>
             }
-        </tbody>
-    </table>
+            else
+            {
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100 shadow-sm">
+                                @if (!string.IsNullOrEmpty(item.ImageUrl))
+                                {
+                                    <img src="@item.ImageUrl" class="card-img-top" alt="@item.Title" style="height: 200px; object-fit: cover;">
+                                }
+                                <div class="card-body">
+                                    <h5 class="card-title">@item.Title</h5>
+                                    <p class="card-text text-muted">@item.Price.ToString("C2")</p>
+                                    <span class="badge bg-info text-dark">@item.Category?.Name</span>
+                                </div>
+                                <div class="card-footer bg-white border-top-0">
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning w-100 mb-1">Detay / Düzenle</a>
+
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger w-100" onclick="return confirm('Silmek istiyor musun?');">Sil</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
 </div>

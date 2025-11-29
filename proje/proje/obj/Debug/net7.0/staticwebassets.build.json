@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Tv8xY4JG9T0Oa7vH2zvfRMZ+BcdKL78vq0kqL6ggf3Y=",
+  "Hash": "qdINE/og8HqNbHxtJ3yCpSJVGnYEnclUOdecyyD6btw=",
   "Source": "IkinciElEsya",
   "BasePath": "_content/IkinciElEsya",
   "Mode": "Default",
@@ -100,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\0da4d832-afce-41ff-bead-7cb0c57ab3ef_WIN_20231204_18_51_51_Pro.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\wwwroot\\img\\63102d3d-6e75-4a60-b0cf-254c318afec6_WIN_20240214_00_51_53_Pro.jpg",
+      "SourceId": "IkinciElEsya",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\wwwroot\\",
+      "BasePath": "_content/IkinciElEsya",
+      "RelativePath": "img/63102d3d-6e75-4a60-b0cf-254c318afec6_WIN_20240214_00_51_53_Pro.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\63102d3d-6e75-4a60-b0cf-254c318afec6_WIN_20240214_00_51_53_Pro.jpg"
     },
     {
       "Identity": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\wwwroot\\img\\cc1128bc-8361-416a-ad36-c171f2e882e3_WIN_20231204_18_52_20_Pro.jpg",
