@@ -1,8 +1,46 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Anasayfa";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="p-5 mb-4 bg-light rounded-3 shadow-sm text-center">
+    <div class="container-fluid py-5">
+        <h1 class="display-4 fw-bold text-primary">İkinci Elin Yeni Adresi</h1>
+        <p class="col-md-8 fs-4 mx-auto">
+            İhtiyacın olmayan eşyaları sat, hayalindeki ürünlere uygun fiyata ulaş.
+            Güvenli, hızlı ve kolay alışverişin tadını çıkar.
+        </p>
+        <div class="mt-4">
+            <a href="/Product" class="btn btn-primary btn-lg px-4 me-2">Alışverişe Başla</a>
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <a href="/Account/Register" class="btn btn-outline-secondary btn-lg px-4">Hemen Kayıt Ol</a>
+            }
+            else
+            {
+                <a href="/Product/Create" class="btn btn-success btn-lg px-4">Hemen İlan Ver</a>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="row align-items-md-stretch mt-5">
+    <div class="col-md-4 mb-3">
+        <div class="h-100 p-4 text-white bg-dark rounded-3 shadow">
+            <h2>Hızlı Satış</h2>
+            <p>Eşyalarının fotoğrafını çek, bilgilerini gir ve saniyeler içinde ilana koy. Alıcılarla buluşmak hiç bu kadar kolay olmamıştı.</p>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="h-100 p-4 bg-light border rounded-3 shadow-sm">
+            <h2>Geniş Ürün Yelpazesi</h2>
+            <p>Elektronikten mobilyaya, giyimden aksesuara kadar binlerce ürün seni bekliyor. Kategorileri gezmeye başla.</p>
+            <a href="/Product" class="btn btn-outline-dark mt-3">Ürünleri Gör</a>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="h-100 p-4 text-white bg-info rounded-3 shadow">
+            <h2>Güvenli Platform</h2>
+            <p>Yönetici onaylı ilanlar ve güvenilir kullanıcı profilleri ile içiniz rahat olsun. Profilinizi oluşturun ve yönetin.</p>
+        </div>
+    </div>
 </div>
