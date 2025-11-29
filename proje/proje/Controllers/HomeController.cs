@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using proje.Models;
+using IkinciElEsya.Models;
 using System.Diagnostics;
 
-namespace proje.Controllers
+namespace IkinciElEsya.Controllers
 {
     public class HomeController : Controller
     {

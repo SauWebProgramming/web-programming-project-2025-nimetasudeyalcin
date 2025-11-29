@@ -1,6 +1,6 @@
 ﻿using IkinciElEsya.Models;
 
-namespace ProjeAdin.Repositories.Abstract
+namespace IkinciElEsya.Repositories.Abstract
 {
     public interface IProductRepository
     {

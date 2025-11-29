@@ -17,6 +17,6 @@ namespace IkinciElEsya.Models // ProjeAdin kısmını kendi proje adınla deği�
         public string? Description { get; set; } // Soru işareti (?) boş geçilebilir demek.
 
         // İlişki: Bir kategoride birden çok ürün olabilir (One-to-Many)
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<Product>? Products { get; set; }
     }
 }
