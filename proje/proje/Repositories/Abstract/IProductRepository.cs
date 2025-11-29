@@ -10,5 +10,6 @@ namespace IkinciElEsya.Repositories.Abstract
         void UpdateProduct(Product product); // Güncelle
         void DeleteProduct(int id); // Sil
         List<Product> GetProductsByCategoryId(int categoryId);
+        List<Product> GetProductsByUserId(string userId);
     }
 }

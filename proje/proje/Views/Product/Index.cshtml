@@ -17,7 +17,7 @@
                 }
             </div>
             <div class="mt-3">
-                @if (User.Identity.IsAuthenticated)
+                @if (User.Identity.IsAuthenticated && !User.IsInRole("Admin"))
                 {
                     <a asp-action="Create" class="btn btn-success w-100">+ İlan Ver</a>
                 }
@@ -49,9 +49,17 @@
                                     <span class="badge bg-info text-dark">@item.Category?.Name</span>
                                 </div>
                                 <div class="card-footer bg-white border-top-0">
-                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning w-100 mb-1">Detay / Düzenle</a>
-
-                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger w-100" onclick="return confirm('Silmek istiyor musun?');">Sil</a>
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <div class="border-top pt-2 mt-2">
+                                            <small class="text-danger fw-bold d-block mb-1 text-center">Admin Yetkisi</small>
+                                            <a asp-action="Delete" asp-route-id="@item.Id"
+                                               class="btn btn-sm btn-danger w-100"
+                                               onclick="return confirm('ADMIN DİKKAT: Bu ürünü kalıcı olarak silmek üzeresiniz. Onaylıyor musunuz?');">
+                                                X Ürünü Kaldır
+                                            </a>
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         </div>

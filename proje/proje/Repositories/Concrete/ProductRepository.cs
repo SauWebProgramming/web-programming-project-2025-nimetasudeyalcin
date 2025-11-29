@@ -55,5 +55,12 @@ namespace IkinciElEsya.Repositories.Concrete
                 .Where(x => x.CategoryId == categoryId) // Filtreleme burası
                 .ToList();
         }
+        public List<Product> GetProductsByUserId(string userId)
+        {
+            return _context.Products
+                .Include(x => x.Category)
+                .Where(x => x.SellerId == userId) // Sadece bu kullanıcınınkiler
+                .ToList();
+        }
     }
 }

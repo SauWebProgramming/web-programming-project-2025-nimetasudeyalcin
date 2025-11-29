@@ -179,5 +179,17 @@ namespace IkinciElEsya.Controllers
             }
             return RedirectToAction("Index");
         }
+        // KULLANICININ KENDİ ÜRÜNLERİ (PROFİLİM)
+        [Authorize]
+        public IActionResult MyProducts()
+        {
+            // Şu anki kullanıcının ID'sini al
+            var userId = _userManager.GetUserId(User);
+
+            // Sadece onun ürünlerini getir
+            var myProducts = _productRepository.GetProductsByUserId(userId);
+
+            return View(myProducts);
+        }
     }
 }

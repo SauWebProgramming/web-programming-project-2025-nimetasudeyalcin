@@ -25,8 +25,15 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Product" asp-action="Index">Ürünler</a>
+                            <a class="nav-link text-dark" asp-controller="Product" asp-action="Index">Tüm Ürünler</a>
                         </li>
+
+                        @if (User.Identity.IsAuthenticated && !User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-primary fw-bold" asp-controller="Product" asp-action="MyProducts">Ürünlerim</a>
+                            </li>
+                        }
 
                         @if (User.IsInRole("Admin"))
                         {
