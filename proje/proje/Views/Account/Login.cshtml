@@ -1,0 +1,37 @@
+﻿@model IkinciElEsya.Models.LoginViewModel
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h3 class="card-title">Giriş Yap</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Login" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="mb-3">
+                            <label>Email</label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Şifre</label>
+                            <input asp-for="Password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <input asp-for="RememberMe" class="form-check-input" />
+                            <label class="form-check-label">Beni Hatırla</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100">Giriş Yap</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

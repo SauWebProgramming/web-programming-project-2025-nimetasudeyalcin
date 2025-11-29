@@ -56,5 +56,21 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+// --- SEED DATA (OTOMATÝK ADMIN EKLEME) ---
+// Uygulama ayaða kalkarken bir scope oluþturup SeedData'yý çalýþtýrýyoruz
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        // SeedData sýnýfýndaki Initialize metodunu çaðýr
+        await SeedData.Initialize(services);
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "Veritabanýna seed data eklenirken bir hata oluþtu.");
+    }
+}
+// -----------------------------------------
 app.Run();

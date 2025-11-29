@@ -5,7 +5,7 @@ using IkinciElEsya.Repositories.Abstract;
 
 namespace IkinciElEsya.Controllers
 {
-    // [Authorize(Roles = "Admin")] // <-- DİKKAT: Test etmek için şimdilik kapalı kalsın. Admin ekleyince açacağız.
+    [Authorize(Roles = "Admin")] // <-- DİKKAT: Test etmek için şimdilik kapalı kalsın. Admin ekleyince açacağız.
     public class CategoryController : Controller
     {
         private readonly ICategoryRepository _categoryRepository;
