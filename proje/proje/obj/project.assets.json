@@ -45,9 +45,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\proje.csproj",
-      "projectName": "proje",
-      "projectPath": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\proje.csproj",
+      "projectUniqueName": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\IkinciElEsya.csproj",
+      "projectName": "IkinciElEsya",
+      "projectPath": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\IkinciElEsya.csproj",
       "packagesPath": "C:\\Users\\nimet\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\obj\\",
       "projectStyle": "PackageReference",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yPvpWdqvPT8YlpYGtzLgN0qYlLnJXj9mSbGZqc26mIkfFrVpVaZuohfcmNOxIw4b3GzkuMS/Q0NHbeWy+lNw5w==",
+  "dgSpecHash": "Kpl8BwRu0e/rxMagRfWE0Ul3/o/50MJs5I6vBN3AlUOq4wXkAxNUowFLtP2PLiChRnCwsk42inqXUR0dn3E+6Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\proje.csproj",
+  "projectFilePath": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\IkinciElEsya.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nimet\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\10.0.0\\microsoft.entityframeworkcore.tools.10.0.0.nupkg.sha512"
   ],
