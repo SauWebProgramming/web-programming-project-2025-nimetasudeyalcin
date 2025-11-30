@@ -1,0 +1,48 @@
+﻿@model IkinciElEsya.Models.ProfileViewModel
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3>Profil Bilgilerim</h3>
+                </div>
+                <div class="card-body">
+
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+                    }
+
+                    <form asp-action="Profile" method="post">
+
+                        <input type="hidden" asp-for="Email" />
+
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input asp-for="Email" class="form-control" disabled />
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Ad</label>
+                                <input asp-for="FirstName" class="form-control" />
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Soyad</label>
+                                <input asp-for="LastName" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Şehir</label>
+                            <input asp-for="City" class="form-control" />
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Bilgileri Güncelle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

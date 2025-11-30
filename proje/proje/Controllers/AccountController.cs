@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using IkinciElEsya.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IkinciElEsya.Controllers
 {
@@ -85,6 +86,53 @@ namespace IkinciElEsya.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+        // 1. PROFİL SAYFASINI GETİR
+        [Authorize]
+        public async Task<IActionResult> Profile()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null) return RedirectToAction("Login");
+
+            var model = new ProfileViewModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                City = user.City,
+                Email = user.Email
+            };
+
+            return View(model);
+        }
+
+        // 2. PROFİLİ GÜNCELLE (POST)
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Profile(ProfileViewModel model)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null) return RedirectToAction("Login");
+
+            if (ModelState.IsValid)
+            {
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+                user.City = model.City;
+                // Email değiştirmeyi güvenlik gereği şimdilik kapalı tutuyoruz
+
+                var result = await _userManager.UpdateAsync(user);
+
+                if (result.Succeeded)
+                {
+                    TempData["SuccessMessage"] = "Profiliniz başarıyla güncellendi.";
+                    return RedirectToAction("Profile"); // Sayfayı yenile
+                }
+
+                foreach (var error in result.Errors)
+                    ModelState.AddModelError("", error.Description);
+            }
+
+            return View(model);
         }
     }
 }
