@@ -48,5 +48,24 @@ namespace IkinciElEsya.Controllers
             _categoryRepository.DeleteCategory(id);
             return RedirectToAction("Index");
         }
+        // 4. GÜNCELLEME SAYFASI (Verileri Getirir)
+        public IActionResult Edit(int id)
+        {
+            var category = _categoryRepository.GetCategoryById(id);
+            if (category == null) return NotFound();
+            return View(category);
+        }
+
+        // 5. GÜNCELLEME İŞLEMİ (Kaydeder)
+        [HttpPost]
+        public IActionResult Edit(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                _categoryRepository.UpdateCategory(category);
+                return RedirectToAction("Index");
+            }
+            return View(category);
+        }
     }
 }

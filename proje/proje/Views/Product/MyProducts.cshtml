@@ -1,51 +1,93 @@
 ﻿@model List<IkinciElEsya.Models.Product>
 
 <div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2>Ürünlerim (Profilim)</h2>
-        <a asp-action="Create" class="btn btn-success">+ Yeni Ürün Ekle</a>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-primary mb-0">Ürünlerim</h2>
+            <p class="text-muted small mb-0">Satıştaki ilanlarını buradan yönetebilir, güncelleyebilir veya silebilirsin.</p>
+        </div>
+        <a asp-action="Create" class="btn btn-primary shadow-sm px-4">
+            + Yeni İlan Oluştur
+        </a>
     </div>
 
     @if (Model.Count == 0)
     {
-        <div class="alert alert-info">
-            Henüz hiç ürün eklemediniz. <a asp-action="Create">Hemen ilk ilanını ver!</a>
+        <div class="card shadow-sm border-0 text-center py-5">
+            <div class="card-body">
+                <h4 class="text-muted fw-bold">Henüz hiç ilan vermedin.</h4>
+                <p class="text-muted mb-4">Hemen satış yapmaya başlamak için ilk ilanını oluştur.</p>
+                <a asp-action="Create" class="btn btn-outline-primary px-4 rounded-pill">İlan Ver</a>
+            </div>
         </div>
     }
     else
     {
-        <table class="table table-bordered table-hover align-middle">
-            <thead class="table-light">
-                <tr>
-                    <th>Görsel</th>
-                    <th>Ürün Adı</th>
-                    <th>Fiyat</th>
-                    <th>Kategori</th>
-                    <th>Tarih</th>
-                    <th>İşlemler</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td style="width: 100px;">
-                            @if (!string.IsNullOrEmpty(item.ImageUrl))
-                            {
-                                <img src="@item.ImageUrl" width="80" height="60" style="object-fit:cover; border-radius:5px;" />
-                            }
-                        </td>
-                        <td>@item.Title</td>
-                        <td>@item.Price.ToString("C2")</td>
-                        <td><span class="badge bg-secondary">@item.Category?.Name</span></td>
-                        <td>@item.CreatedDate.ToShortDateString()</td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Düzenle</a>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger" onclick="return confirm('Silmek istediğine emin misin?');">Sil</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        <div class="card shadow border-0 overflow-hidden" style="border-radius: 15px;">
+            <div class="card-body p-0">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="bg-light">
+                        <tr class="text-primary">
+                            <th class="ps-4 py-3">Görsel</th>
+                            <th class="py-3">Ürün Bilgisi</th>
+                            <th class="py-3">Fiyat</th>
+                            <th class="py-3">Kategori</th>
+                            <th class="py-3">Tarih</th>
+                            <th class="text-end pe-4 py-3">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="ps-4" style="width: 100px;">
+                                    @if (!string.IsNullOrEmpty(item.ImageUrl))
+                                    {
+                                        <img src="@item.ImageUrl" width="80" height="60" class="rounded border shadow-sm" style="object-fit:cover;" />
+                                    }
+                                    else
+                                    {
+                                        <div class="bg-light rounded border d-flex align-items-center justify-content-center text-muted small" style="width: 80px; height: 60px;">
+                                            Yok
+                                        </div>
+                                    }
+                                </td>
+
+                                <td>
+                                    <span class="fw-bold text-dark d-block">@item.Title</span>
+                                </td>
+
+                                <td>
+                                    <span class="text-primary fw-bold">@item.Price.ToString("C2")</span>
+                                </td>
+
+                                <td>
+                                    <span class="badge bg-white text-primary border shadow-sm px-3 py-2" style="border-radius: 12px;">
+                                        @item.Category?.Name
+                                    </span>
+                                </td>
+
+                                <td class="text-muted small">
+                                    @item.CreatedDate.ToShortDateString()
+                                </td>
+
+                                <td class="text-end pe-4">
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary px-3 me-1" style="border-radius: 8px;">
+                                        Düzenle
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id"
+                                       class="btn btn-sm btn-outline-danger px-3"
+                                       style="border-radius: 8px;"
+                                       onclick="return confirm('Bu ilanı yayından kaldırmak istediğine emin misin?');">
+                                        Sil
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     }
 </div>

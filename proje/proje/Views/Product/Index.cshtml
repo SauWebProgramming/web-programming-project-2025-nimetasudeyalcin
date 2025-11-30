@@ -2,35 +2,51 @@
 
 <div class="container mt-4">
     <div class="row">
-        <div class="col-md-3">
-            <div class="list-group">
-                <a asp-action="Index" asp-route-categoryId=""
-                   class="list-group-item list-group-item-action @(ViewBag.SelectedCategoryId == null ? "active" : "")">
-                    Tüm Ürünler
-                </a>
-                @foreach (var cat in ViewBag.Categories)
-                {
-                    <a asp-action="Index" asp-route-categoryId="@cat.Id"
-                       class="list-group-item list-group-item-action @(ViewBag.SelectedCategoryId == cat.Id ? "active" : "")">
-                        @cat.Name
-                    </a>
-                }
-            </div>
-            <div class="mt-3">
+
+        <div class="col-md-3 mb-4">
+            <div class="card shadow border-0">
+                <div class="card-header bg-white border-bottom-0 pt-4 pb-2">
+                    <h5 class="fw-bold text-primary">Kategoriler</h5>
+                </div>
+                <div class="card-body p-2">
+                    <div class="list-group list-group-flush">
+                        <a asp-action="Index" asp-route-categoryId=""
+                           class="list-group-item list-group-item-action border-0 rounded mb-1 @(ViewBag.SelectedCategoryId == null ? "bg-light fw-bold text-primary" : "text-muted")">
+                            Tüm Ürünler
+                        </a>
+                        @foreach (var cat in ViewBag.Categories)
+                        {
+                            <a asp-action="Index" asp-route-categoryId="@cat.Id"
+                               class="list-group-item list-group-item-action border-0 rounded mb-1 @(ViewBag.SelectedCategoryId == cat.Id ? "bg-light fw-bold text-primary" : "text-muted")">
+                                @cat.Name
+                            </a>
+                        }
+                    </div>
+                </div>
+
                 @if (User.Identity.IsAuthenticated && !User.IsInRole("Admin"))
                 {
-                    <a asp-action="Create" class="btn btn-success w-100">+ İlan Ver</a>
+                    <div class="p-3 border-top">
+                        <a asp-action="Create" class="btn btn-primary w-100 shadow-sm">+ Hemen İlan Ver</a>
+                    </div>
                 }
             </div>
         </div>
 
         <div class="col-md-9">
-            <h2>Ürün Listesi</h2>
-            <hr />
+
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <h2 class="fw-bold text-dark mb-0">Ürün Listesi</h2>
+                <span class="text-muted small">Toplam @Model.Count ürün listeleniyor</span>
+            </div>
+            <hr class="text-muted mb-4" />
 
             @if (Model.Count == 0)
             {
-                <div class="alert alert-warning">Bu kategoride henüz ürün yok.</div>
+                <div class="alert alert-light shadow-sm border-0 text-center py-5">
+                    <h4 class="text-muted">Bu kategoride henüz ürün yok.</h4>
+                    <p>İlk ilanı sen vermek ister misin?</p>
+                </div>
             }
             else
             {
@@ -38,27 +54,46 @@
                     @foreach (var item in Model)
                     {
                         <div class="col-md-4 mb-4">
-                            <div class="card h-100 shadow-sm border-0">
-                                @if (!string.IsNullOrEmpty(item.ImageUrl))
-                                {
-                                    <img src="@item.ImageUrl" class="card-img-top" alt="@item.Title" style="height: 200px; object-fit: cover;">
-                                }
-                                <div class="card-body">
-                                    <h5 class="card-title">@item.Title</h5>
-                                    <p class="card-text text-muted">@item.Price.ToString("C2")</p>
-                                    <span class="badge bg-info text-dark">@item.Category?.Name</span>
+                            <div class="card h-100">
+                                <div style="position: relative;">
+                                    @if (!string.IsNullOrEmpty(item.ImageUrl))
+                                    {
+                                        <img src="@item.ImageUrl" class="card-img-top" alt="@item.Title" style="height: 220px; object-fit: cover;">
+                                    }
+                                    else
+                                    {
+                                        <div class="bg-light d-flex align-items-center justify-content-center" style="height: 220px;">
+                                            <span class="text-muted">Resim Yok</span>
+                                        </div>
+                                    }
+
+                                    <span class="badge bg-white text-primary shadow-sm position-absolute top-0 end-0 m-2 px-3 py-2" style="border-radius: 20px;">
+                                        @item.Category?.Name
+                                    </span>
                                 </div>
-                                <div class="card-footer bg-white border-top-0">
+
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title fw-bold text-dark text-truncate">@item.Title</h5>
+                                    <p class="card-text text-primary fw-bold fs-5 mb-0">@item.Price.ToString("C2")</p>
+                                </div>
+
+                                <div class="card-footer bg-white border-top-0 pt-0 pb-3">
+                                    <button class="btn btn-outline-primary w-100 mb-2 rounded-pill">İncele</button>
+
                                     @if (User.IsInRole("Admin"))
                                     {
-                                        <div class="border-top pt-2 mt-2">
-                                            <small class="text-danger fw-bold d-block mb-1 text-center">Admin Yetkisi</small>
+                                        <div class="border-top pt-2 mt-2 text-center bg-light rounded p-2">
+                                            <small class="text-danger fw-bold d-block mb-1" style="font-size: 0.7rem;">YÖNETİCİ YETKİSİ</small>
                                             <a asp-action="Delete" asp-route-id="@item.Id"
-                                               class="btn btn-sm btn-danger w-100"
+                                               class="btn btn-sm btn-danger w-100 py-1"
                                                onclick="return confirm('ADMIN DİKKAT: Bu ürünü kalıcı olarak silmek üzeresiniz. Onaylıyor musunuz?');">
-                                                X Ürünü Kaldır
+                                                Sil
                                             </a>
                                         </div>
+                                    }
+                                    else
+                                    {
+                                        <small class="text-muted d-block text-center" style="font-size: 0.8rem;">Satıcı ile iletişime geç</small>
                                     }
                                 </div>
                             </div>

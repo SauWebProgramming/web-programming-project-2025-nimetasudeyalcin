@@ -1,22 +1,230 @@
-html {
-  font-size: 14px;
+/* 1. MODERN FONTLARI ÝÇERÝ AKTAR */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* 2. GENEL AYARLAR */
+:root {
+    --primary-color: #584bba;
+    --primary-hover: #463aa0;
+    --secondary-color: #a29bfe;
+    --bg-color: #f8f9fd;
+    --text-dark: #2d3436;
+    --text-muted: #636e72;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --card-hover-shadow: 0 15px 35px rgba(88, 75, 186, 0.15);
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+/* --- BOOTSTRAP RENKLERÝNÝ EZME --- */
+.text-primary {
+    color: var(--primary-color) !important;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+    .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+        background-color: var(--primary-hover) !important;
+        border-color: var(--primary-hover) !important;
+    }
+
+.btn-outline-primary {
+    color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
 }
+
+    .btn-outline-primary:hover {
+        background-color: var(--primary-color) !important;
+        color: #ffffff !important;
+    }
+/* ---------------------------------- */
 
 body {
-  margin-bottom: 60px;
+    font-family: 'Inter', sans-serif;
+    /* Soft Gradient Arkaplan */
+    background: linear-gradient(135deg, #fdfbfb 0%, #f3f0ff 100%);
+    color: var(--text-dark);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding-bottom: 60px; /* Footer mobilde çakýþmasýn diye */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* 3. NAVBAR (ÜST MENÜ) & RESPONSIVE AYARLARI */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.navbar-brand {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem; /* Mobilde taþmasýn diye biraz küçülttük */
+    font-weight: 700;
+    color: var(--primary-color) !important;
+    letter-spacing: -0.5px;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--text-muted) !important;
+    font-size: 1rem;
+    margin: 0 10px;
+    position: relative;
+}
+
+    /* Menü alt çizgi animasyonu */
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 50%;
+        background-color: var(--primary-color);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+
+    .nav-link:hover::after {
+        width: 80%;
+    }
+
+/* 4. BUTONLAR */
+.btn {
+    border-radius: 12px;
+    padding: 10px 24px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    border: none;
+    /* Mobilde týklanabilirliði artýrmak için */
+    touch-action: manipulation;
+}
+
+/* 5. KARTLAR & GLASSMORPHISM */
+.card {
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    transition: all 0.4s ease;
+    overflow: hidden;
+    margin-bottom: 20px; /* Mobilde kartlar birbirine yapýþmasýn */
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--card-hover-shadow);
+    }
+
+.card-header {
+    background-color: transparent; /* Glass effect bozulmasýn */
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-weight: 700;
+    padding: 1.5rem;
+}
+
+.card-footer {
+    background-color: transparent;
+    border-top: none;
+    padding-bottom: 1.5rem;
+}
+
+/* 6. TABLOLAR (RESPONSIVE WRAPPER) */
+/* Tablolarýn mobilde taþmamasý için kartýn içine overflow veriyoruz */
+.card-body.p-0 {
+    overflow-x: auto;
+}
+
+.table {
+    background-color: transparent;
+    margin-bottom: 0;
+    min-width: 600px; /* Tablo çok sýkýþmasýn, yana kaydýrýlsýn */
+}
+
+    .table thead {
+        background-color: rgba(248, 249, 250, 0.5);
+        color: var(--primary-color);
+    }
+
+    .table th, .table td {
+        vertical-align: middle;
+        padding: 15px;
+        border-color: rgba(0,0,0,0.05);
+    }
+
+/* 7. FORM KUTULARI */
+.form-control, .form-select {
+    border-radius: 10px;
+    border: 2px solid #dfe6e9;
+    padding: 12px;
+    background-color: #fcfcfc;
+}
+
+    .form-control:focus, .form-select:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 4px rgba(88, 75, 186, 0.1);
+        background-color: #fff;
+    }
+
+/* 8. FOOTER */
+.footer {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-top: 1px solid rgba(0,0,0,0.05);
+    color: var(--text-muted);
+    backdrop-filter: blur(10px);
+}
+
+/* --- MOBÝL UYUMLULUK (MEDIA QUERIES) --- */
+@media (max-width: 768px) {
+    /* Baþlýk boyutlarýný mobilde küçült */
+    h1.display-3 {
+        font-size: 2.5rem;
+    }
+
+    h1.display-4 {
+        font-size: 2rem;
+    }
+
+    /* Kartlarýn paddingini azalt */
+    .card-body {
+        padding: 1.5rem !important;
+    }
+
+    /* Hero bölümündeki boþluklarý azalt */
+    .container-fluid.py-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    /* Mobilde butonlar tam geniþlik olsun */
+    .d-flex.justify-content-center.gap-3 {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .d-flex.gap-3 > .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    /* Navbar linkleri mobilde alt alta dizilince boþluk býrak */
+    .navbar-nav .nav-item {
+        margin-bottom: 5px;
+    }
 }

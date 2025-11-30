@@ -1,37 +1,49 @@
 ﻿@model IkinciElEsya.Models.LoginViewModel
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-4">
-            <div class="card shadow">
-                <div class="card-header bg-success text-white">
-                    <h3 class="card-title">Giriş Yap</h3>
-                </div>
-                <div class="card-body">
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="col-md-5 col-lg-4">
+
+            <div class="card shadow border-0">
+                <div class="card-body p-4 p-md-5">
+
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold text-primary">Hoş Geldiniz</h2>
+                        <p class="text-muted">Hesabınıza giriş yaparak devam edin</p>
+                    </div>
+
                     <form asp-action="Login" method="post">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
 
                         <div class="mb-3">
-                            <label>Email</label>
-                            <input asp-for="Email" class="form-control" />
-                            <span asp-validation-for="Email" class="text-danger"></span>
+                            <label class="form-label fw-bold text-muted small">Email Adresi</label>
+                            <input asp-for="Email" class="form-control" placeholder="ornek@email.com" />
+                            <span asp-validation-for="Email" class="text-danger small"></span>
                         </div>
 
                         <div class="mb-3">
-                            <label>Şifre</label>
-                            <input asp-for="Password" class="form-control" />
-                            <span asp-validation-for="Password" class="text-danger"></span>
+                            <label class="form-label fw-bold text-muted small">Şifre</label>
+                            <input asp-for="Password" class="form-control" placeholder="******" />
+                            <span asp-validation-for="Password" class="text-danger small"></span>
                         </div>
 
-                        <div class="form-check mb-3">
-                            <input asp-for="RememberMe" class="form-check-input" />
-                            <label class="form-check-label">Beni Hatırla</label>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="form-check">
+                                <input asp-for="RememberMe" class="form-check-input" />
+                                <label class="form-check-label text-muted small">Beni Hatırla</label>
+                            </div>
                         </div>
 
-                        <button type="submit" class="btn btn-success w-100">Giriş Yap</button>
+                        <button type="submit" class="btn btn-primary w-100 py-2 mb-3">Giriş Yap</button>
+
+                        <div class="text-center">
+                            <span class="text-muted small">Hesabınız yok mu?</span>
+                            <a asp-action="Register" class="text-primary fw-bold text-decoration-none small">Hemen Kayıt Ol</a>
+                        </div>
                     </form>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

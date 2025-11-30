@@ -1,48 +1,63 @@
 ﻿@model IkinciElEsya.Models.ProfileViewModel
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white">
-                    <h3>Profil Bilgilerim</h3>
-                </div>
-                <div class="card-body">
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="col-md-6 col-lg-5">
+
+            <div class="card shadow border-0">
+                <div class="card-body p-4 p-md-5">
+
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold text-primary">Profil Bilgileri</h2>
+                        <p class="text-muted">Kişisel bilgilerinizi buradan güncelleyebilirsiniz</p>
+                    </div>
 
                     @if (TempData["SuccessMessage"] != null)
                     {
-                        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+                        <div class="alert alert-success border-0 shadow-sm d-flex align-items-center mb-4">
+                            <span class="me-2">✅</span>
+                            <span class="small">@TempData["SuccessMessage"]</span>
+                        </div>
                     }
 
                     <form asp-action="Profile" method="post">
-
                         <input type="hidden" asp-for="Email" />
 
-                        <div class="mb-3">
-                            <label class="form-label">Email</label>
-                            <input asp-for="Email" class="form-control" disabled />
+                        <div class="mb-4">
+                            <label class="form-label fw-bold text-muted small">Email Adresi</label>
+                            <div class="input-group">
+                                <input asp-for="Email" class="form-control bg-light text-muted" disabled />
+                                <span class="input-group-text bg-light border-start-0 text-muted">🔒</span>
+                            </div>
+                            <small class="text-muted fst-italic mt-1 d-block" style="font-size: 0.75rem;">
+                                Güvenlik nedeniyle email adresi değiştirilemez.
+                            </small>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">Ad</label>
-                                <input asp-for="FirstName" class="form-control" />
+                                <label class="form-label fw-bold text-muted small">Ad</label>
+                                <input asp-for="FirstName" class="form-control" placeholder="Adınız" />
+                                <span asp-validation-for="FirstName" class="text-danger small"></span>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">Soyad</label>
-                                <input asp-for="LastName" class="form-control" />
+                                <label class="form-label fw-bold text-muted small">Soyad</label>
+                                <input asp-for="LastName" class="form-control" placeholder="Soyadınız" />
+                                <span asp-validation-for="LastName" class="text-danger small"></span>
                             </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Şehir</label>
-                            <input asp-for="City" class="form-control" />
-                        </div>
+                        <button type="submit" class="btn btn-primary w-100 py-2 mt-2">Değişiklikleri Kaydet</button>
 
-                        <button type="submit" class="btn btn-primary w-100">Bilgileri Güncelle</button>
+                        <div class="text-center mt-3">
+                            <a asp-controller="Product" asp-action="MyProducts" class="text-muted small text-decoration-none">
+                                &larr; İlanlarıma Dön
+                            </a>
+                        </div>
                     </form>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
