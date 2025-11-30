@@ -191,5 +191,20 @@ namespace IkinciElEsya.Controllers
 
             return View(myProducts);
         }
+        // ÜRÜN DETAY SAYFASI
+        public async Task<IActionResult> Details(int id)
+        {
+            var product = _productRepository.GetProductById(id);
+            if (product == null) return NotFound();
+
+            // Ürünü satan kullanıcıyı buluyoruz
+            var seller = await _userManager.FindByIdAsync(product.SellerId);
+
+            // Satıcı bilgilerini sayfaya taşıyoruz
+            ViewBag.SellerName = seller != null ? $"{seller.FirstName} {seller.LastName}" : "Bilinmiyor";
+            ViewBag.SellerEmail = seller != null ? seller.Email : "Belirtilmemiş";
+
+            return View(product);
+        }
     }
 }

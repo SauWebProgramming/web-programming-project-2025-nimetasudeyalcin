@@ -78,8 +78,10 @@
                                 </div>
 
                                 <div class="card-footer bg-white border-top-0 pt-0 pb-3">
-                                    <button class="btn btn-outline-primary w-100 mb-2 rounded-pill">İncele</button>
-
+                                    <!-- Button yerine 'a' etiketi kullanıyoruz ki sayfaya gitsin -->
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary w-100 mb-2 rounded-pill">
+                                        İncele
+                                    </a>
                                     @if (User.IsInRole("Admin"))
                                     {
                                         <div class="border-top pt-2 mt-2 text-center bg-light rounded p-2">

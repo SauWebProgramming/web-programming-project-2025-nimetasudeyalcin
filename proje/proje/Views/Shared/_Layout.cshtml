@@ -18,20 +18,22 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light mb-4">
+        <!-- DİKKAT: navbar-expand-sm yerine navbar-expand-lg yaptık.
+             Böylece tabletlerde ve küçük laptoplarda menü hamburger olur, taşmaz. -->
+        <nav class="navbar navbar-expand-lg navbar-light mb-4">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Home" asp-action="Index">
                     <span style="font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.8rem; letter-spacing: -1px; color: var(--primary-color);">
                         dön<span style="font-weight: 300; color: var(--text-dark);">gü</span><span style="color: var(--secondary-color);">.</span>
                     </span>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler border-0 shadow-sm" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation" style="background-color: rgba(255,255,255,0.8);">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="navbar-collapse collapse d-lg-inline-flex justify-content-between mt-3 mt-lg-0">
 
-                    <ul class="navbar-nav flex-grow-1 align-items-center">
+                    <ul class="navbar-nav flex-grow-1 align-items-lg-center">
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Index">Anasayfa</a>
                         </li>
@@ -57,29 +59,29 @@
                         }
                     </ul>
 
-                    <ul class="navbar-nav ms-auto align-items-center">
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
                         @if (User.Identity.IsAuthenticated)
                         {
                             var currentUser = await UserManager.GetUserAsync(User);
 
-                            <li class="nav-item me-2">
+                            <li class="nav-item me-2 my-2 my-lg-0">
                                 <a class="nav-link fw-bold text-dark" asp-controller="Account" asp-action="Profile">
                                     Merhaba, @currentUser?.FirstName
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <form class="form-inline" asp-controller="Account" asp-action="Logout">
-                                    <button type="submit" class="btn btn-sm btn-outline-danger" style="border-radius: 20px;">Çıkış Yap</button>
+                                    <button type="submit" class="btn btn-sm btn-outline-danger w-100 rounded-pill px-3">Çıkış Yap</button>
                                 </form>
                             </li>
                         }
                         else
                         {
-                            <li class="nav-item me-2">
-                                <a class="btn btn-sm btn-outline-primary" asp-controller="Account" asp-action="Login">Giriş Yap</a>
+                            <li class="nav-item me-2 my-2 my-lg-0">
+                                <a class="btn btn-sm btn-outline-primary w-100 rounded-pill px-3" asp-controller="Account" asp-action="Login">Giriş Yap</a>
                             </li>
                             <li class="nav-item">
-                                <a class="btn btn-sm btn-primary text-white" asp-controller="Account" asp-action="Register">Kayıt Ol</a>
+                                <a class="btn btn-sm btn-primary text-white w-100 rounded-pill px-3" asp-controller="Account" asp-action="Register">Kayıt Ol</a>
                             </li>
                         }
                     </ul>
@@ -96,7 +98,7 @@
 
     <footer class="footer text-muted text-center border-top">
         <div class="container py-3">
-            &copy; 2025 - <strong>İkinci El Satış Platformu</strong> - Tüm Hakları Saklıdır.
+            &copy; 2025 - <strong>Döngü</strong> - Tüm Hakları Saklıdır.
         </div>
     </footer>
 
