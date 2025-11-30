@@ -26,21 +26,37 @@ namespace IkinciElEsya.Controllers
         }
 
         // 1. LİSTELEME VE FİLTRELEME
+        // Controllers/ProductController.cs içindeki Index metodu:
+
         public IActionResult Index(int? categoryId)
         {
-            // Sidebar'da kategorileri listelemek için veriyi gönderiyoruz
             ViewBag.Categories = _categoryRepository.GetAllCategories();
-            ViewBag.SelectedCategoryId = categoryId; // Hangi kategori seçili bilsin
+            ViewBag.SelectedCategoryId = categoryId;
+
+            // --- FAVORİ KONTROLÜ (MEVCUT METODU KULLANARAK) ---
+            if (User.Identity.IsAuthenticated)
+            {
+                var userId = _userManager.GetUserId(User);
+
+                // 1. Mevcut metodu kullanarak favori ürünleri getir
+                var favProducts = _productRepository.GetUserFavorites(userId);
+
+                // 2. Bu ürünlerin sadece ID'lerini alıp listeye çevir (Örn: [1, 5, 8])
+                ViewBag.UserFavoriteIds = favProducts.Select(x => x.Id).ToList();
+            }
+            else
+            {
+                ViewBag.UserFavoriteIds = new List<int>();
+            }
+            // ----------------------------------------------------
 
             if (categoryId.HasValue)
             {
-                // Filtreli getir
                 var products = _productRepository.GetProductsByCategoryId(categoryId.Value);
                 return View(products);
             }
             else
             {
-                // Hepsini getir
                 var products = _productRepository.GetAllProducts();
                 return View(products);
             }
@@ -205,6 +221,14 @@ namespace IkinciElEsya.Controllers
             ViewBag.SellerEmail = seller != null ? seller.Email : "Belirtilmemiş";
 
             return View(product);
+        }
+        // FAVORİLERİM SAYFASI
+        [Authorize]
+        public IActionResult Favorites()
+        {
+            var userId = _userManager.GetUserId(User);
+            var favorites = _productRepository.GetUserFavorites(userId);
+            return View(favorites);
         }
     }
 }

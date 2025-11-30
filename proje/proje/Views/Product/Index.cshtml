@@ -3,6 +3,8 @@
 @inject IkinciElEsya.Services.CurrencyService CurrencyService
 @{
     decimal dollarRate = CurrencyService.GetUsdRate();
+    // Controller'dan gelen ID listesini karşılıyoruz
+    var favoriteIds = ViewBag.UserFavoriteIds as List<int> ?? new List<int>();
 }
 
 <div class="container mt-4">
@@ -50,8 +52,15 @@
                                     <button class="btn btn-light rounded-circle position-absolute top-0 start-0 m-2 shadow-sm fav-btn"
                                             data-id="@item.Id"
                                             style="width: 35px; height: 35px; padding: 0; display: flex; align-items: center; justify-content: center; z-index: 10;">
-                                        <!-- Boş Kalp İkonu (Tıklayınca JS ile dolacak) -->
-                                        <i class="bi bi-heart text-danger"></i>
+
+                                        @if (favoriteIds.Contains(item.Id))
+                                        {
+                                            <i class="bi bi-heart-fill text-danger"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="bi bi-heart text-danger"></i>
+                                        }
                                     </button>
                                 }
 

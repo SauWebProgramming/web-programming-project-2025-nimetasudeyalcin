@@ -11,5 +11,6 @@ namespace IkinciElEsya.Repositories.Abstract
         void DeleteProduct(int id); // Sil
         List<Product> GetProductsByCategoryId(int categoryId);
         List<Product> GetProductsByUserId(string userId);
+        List<Product> GetUserFavorites(string userId);
     }
 }

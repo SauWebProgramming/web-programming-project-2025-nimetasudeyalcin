@@ -62,5 +62,13 @@ namespace IkinciElEsya.Repositories.Concrete
                 .Where(x => x.SellerId == userId) // Sadece bu kullanıcınınkiler
                 .ToList();
         }
+        public List<Product> GetUserFavorites(string userId)
+        {
+            // Favoriler tablosunda UserID'si eşleşen ürünleri çekiyoruz
+            return _context.Products
+                .Include(x => x.Category)
+                .Where(p => _context.Favorites.Any(f => f.ProductId == p.Id && f.UserId == userId))
+                .ToList();
+        }
     }
 }
