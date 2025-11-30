@@ -34,7 +34,7 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 // -----------------------------------------------------------------
-
+builder.Services.AddScoped<IkinciElEsya.Services.CurrencyService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -56,6 +56,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 // --- SEED DATA (OTOMATÝK ADMIN EKLEME) ---
 // Uygulama ayaða kalkarken bir scope oluþturup SeedData'yý çalýþtýrýyoruz
 using (var scope = app.Services.CreateScope())

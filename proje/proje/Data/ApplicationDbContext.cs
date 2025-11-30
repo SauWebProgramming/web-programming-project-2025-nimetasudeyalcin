@@ -16,7 +16,7 @@ namespace IkinciElEsya.Data // Namespace'e dikkat et
         // Veritabanında oluşacak tabloları buraya yazıyoruz
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
-
+        public DbSet<Favorite> Favorites { get; set; }
         // Veritabanı oluşurken çalışacak ayarlar (Opsiyonel ama önerilir)
         protected override void OnModelCreating(ModelBuilder builder)
         {

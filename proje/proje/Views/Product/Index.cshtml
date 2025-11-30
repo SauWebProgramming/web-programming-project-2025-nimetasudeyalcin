@@ -1,8 +1,14 @@
 ﻿@model List<IkinciElEsya.Models.Product>
+<!-- API Servisini Çağırıyoruz -->
+@inject IkinciElEsya.Services.CurrencyService CurrencyService
+@{
+    decimal dollarRate = CurrencyService.GetUsdRate();
+}
 
 <div class="container mt-4">
     <div class="row">
 
+        <!-- SOL MENÜ (AYNI KALDI) -->
         <div class="col-md-3 mb-4">
             <div class="card shadow border-0">
                 <div class="card-header bg-white border-bottom-0 pt-4 pb-2">
@@ -10,43 +16,25 @@
                 </div>
                 <div class="card-body p-2">
                     <div class="list-group list-group-flush">
-                        <a asp-action="Index" asp-route-categoryId=""
-                           class="list-group-item list-group-item-action border-0 rounded mb-1 @(ViewBag.SelectedCategoryId == null ? "bg-light fw-bold text-primary" : "text-muted")">
-                            Tüm Ürünler
-                        </a>
+                        <a asp-action="Index" asp-route-categoryId="" class="list-group-item list-group-item-action border-0 rounded mb-1 @(ViewBag.SelectedCategoryId == null ? "bg-light fw-bold text-primary" : "text-muted")">Tüm Ürünler</a>
                         @foreach (var cat in ViewBag.Categories)
                         {
-                            <a asp-action="Index" asp-route-categoryId="@cat.Id"
-                               class="list-group-item list-group-item-action border-0 rounded mb-1 @(ViewBag.SelectedCategoryId == cat.Id ? "bg-light fw-bold text-primary" : "text-muted")">
-                                @cat.Name
-                            </a>
+                            <a asp-action="Index" asp-route-categoryId="@cat.Id" class="list-group-item list-group-item-action border-0 rounded mb-1 @(ViewBag.SelectedCategoryId == cat.Id ? "bg-light fw-bold text-primary" : "text-muted")">@cat.Name</a>
                         }
                     </div>
                 </div>
-
                 @if (User.Identity.IsAuthenticated && !User.IsInRole("Admin"))
                 {
-                    <div class="p-3 border-top">
-                        <a asp-action="Create" class="btn btn-primary w-100 shadow-sm">+ Hemen İlan Ver</a>
-                    </div>
+                    <div class="p-3 border-top"><a asp-action="Create" class="btn btn-primary w-100 shadow-sm">+ Hemen İlan Ver</a></div>
                 }
             </div>
         </div>
 
+        <!-- SAĞ TARAF: Ürün Listesi -->
         <div class="col-md-9">
-
-            <div class="d-flex align-items-center justify-content-between mb-3">
-                <h2 class="fw-bold text-dark mb-0">Ürün Listesi</h2>
-                <span class="text-muted small">Toplam @Model.Count ürün listeleniyor</span>
-            </div>
-            <hr class="text-muted mb-4" />
-
             @if (Model.Count == 0)
             {
-                <div class="alert alert-light shadow-sm border-0 text-center py-5">
-                    <h4 class="text-muted">Bu kategoride henüz ürün yok.</h4>
-                    <p>İlk ilanı sen vermek ister misin?</p>
-                </div>
+                <div class="alert alert-light shadow-sm border-0 text-center py-5"><h4 class="text-muted">Ürün yok.</h4></div>
             }
             else
             {
@@ -54,43 +42,49 @@
                     @foreach (var item in Model)
                     {
                         <div class="col-md-4 mb-4">
-                            <div class="card h-100">
+                            <div class="card h-100 position-relative">
+
+                                <!-- *** 1. FAVORİ BUTONU (AJAX) *** -->
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <button class="btn btn-light rounded-circle position-absolute top-0 start-0 m-2 shadow-sm fav-btn"
+                                            data-id="@item.Id"
+                                            style="width: 35px; height: 35px; padding: 0; display: flex; align-items: center; justify-content: center; z-index: 10;">
+                                        <!-- Boş Kalp İkonu (Tıklayınca JS ile dolacak) -->
+                                        <i class="bi bi-heart text-danger"></i>
+                                    </button>
+                                }
+
                                 <div style="position: relative;">
                                     @if (!string.IsNullOrEmpty(item.ImageUrl))
                                     {
-                                        <img src="@item.ImageUrl" class="card-img-top" alt="@item.Title" style="height: 220px; object-fit: cover;">
+                                        <img src="@item.ImageUrl" class="card-img-top" style="height: 220px; object-fit: cover;">
                                     }
                                     else
                                     {
-                                        <div class="bg-light d-flex align-items-center justify-content-center" style="height: 220px;">
-                                            <span class="text-muted">Resim Yok</span>
-                                        </div>
+                                        <div class="bg-light d-flex align-items-center justify-content-center" style="height: 220px;"><span class="text-muted">Resim Yok</span></div>
                                     }
-
-                                    <span class="badge bg-white text-primary shadow-sm position-absolute top-0 end-0 m-2 px-3 py-2" style="border-radius: 20px;">
-                                        @item.Category?.Name
-                                    </span>
+                                    <span class="badge bg-white text-primary shadow-sm position-absolute top-0 end-0 m-2 px-3 py-2" style="border-radius: 20px;">@item.Category?.Name</span>
                                 </div>
 
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title fw-bold text-dark text-truncate">@item.Title</h5>
-                                    <p class="card-text text-primary fw-bold fs-5 mb-0">@item.Price.ToString("C2")</p>
+
+                                    <!-- *** 2. API: DOLAR KARŞILIĞI *** -->
+                                    <div class="d-flex align-items-baseline gap-2">
+                                        <p class="card-text text-primary fw-bold fs-5 mb-0">@item.Price.ToString("C2")</p>
+                                        <small class="text-muted" style="font-size: 0.8rem;">
+                                            (≈$@((item.Price / dollarRate).ToString("N0")))
+                                        </small>
+                                    </div>
                                 </div>
 
                                 <div class="card-footer bg-white border-top-0 pt-0 pb-3">
-                                    <!-- Button yerine 'a' etiketi kullanıyoruz ki sayfaya gitsin -->
-                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary w-100 mb-2 rounded-pill">
-                                        İncele
-                                    </a>
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary w-100 mb-2 rounded-pill">İncele</a>
                                     @if (User.IsInRole("Admin"))
                                     {
                                         <div class="border-top pt-2 mt-2 text-center bg-light rounded p-2">
-                                            <small class="text-danger fw-bold d-block mb-1" style="font-size: 0.7rem;">YÖNETİCİ YETKİSİ</small>
-                                            <a asp-action="Delete" asp-route-id="@item.Id"
-                                               class="btn btn-sm btn-danger w-100 py-1"
-                                               onclick="return confirm('ADMIN DİKKAT: Bu ürünü kalıcı olarak silmek üzeresiniz. Onaylıyor musunuz?');">
-                                                Sil
-                                            </a>
+                                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger w-100 py-1" onclick="return confirm('Silmek istiyor musun?');">Sil</a>
                                         </div>
                                     }
                                     else
@@ -106,3 +100,30 @@
         </div>
     </div>
 </div>
+
+<!-- JAVASCRIPT: Sayfa Yenilenmeden Kalp Atma -->
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $(".fav-btn").click(function () {
+                var btn = $(this);
+                var id = btn.data("id");
+                var icon = btn.find("i");
+
+                // AJAX İsteği Gönder
+                $.post("/Favorite/Toggle", { productId: id }, function (data) {
+                    if (data.success) {
+                        // Başarılıysa ikonu değiştir
+                        if (data.isFavorited) {
+                            icon.removeClass("bi-heart").addClass("bi-heart-fill"); // Dolu Kalp
+                        } else {
+                            icon.removeClass("bi-heart-fill").addClass("bi-heart"); // Boş Kalp
+                        }
+                    } else {
+                        alert("İşlem için giriş yapmalısınız.");
+                    }
+                });
+            });
+        });
+    </script>
+}
