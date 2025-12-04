@@ -1,0 +1,57 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{370C5D05-87D6-4402-9543-3548BC1E472B}|proje\\IkinciElEsya.csproj|c:\\users\\nimet\\documents\\github\\web-programming-project-2025-na-yalcin\\proje\\proje\\ikincielesya.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{370C5D05-87D6-4402-9543-3548BC1E472B}|proje\\IkinciElEsya.csproj|solutionrelative:proje\\ikincielesya.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{370C5D05-87D6-4402-9543-3548BC1E472B}|proje\\IkinciElEsya.csproj|c:\\users\\nimet\\documents\\github\\web-programming-project-2025-na-yalcin\\proje\\proje\\ikincielesya.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{370C5D05-87D6-4402-9543-3548BC1E472B}|proje\\IkinciElEsya.csproj|solutionrelative:proje\\ikincielesya.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 100,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IkinciElEsya.csproj",
+              "DocumentMoniker": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\IkinciElEsya.csproj",
+              "RelativeDocumentMoniker": "proje\\IkinciElEsya.csproj",
+              "ToolTip": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\IkinciElEsya.csproj",
+              "RelativeToolTip": "proje\\IkinciElEsya.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-12-03T16:12:50.596Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IkinciElEsya",
+              "DocumentMoniker": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\IkinciElEsya.csproj",
+              "RelativeDocumentMoniker": "proje\\IkinciElEsya.csproj",
+              "ToolTip": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\IkinciElEsya.csproj",
+              "RelativeToolTip": "proje\\IkinciElEsya.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-12-03T15:41:57.296Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
