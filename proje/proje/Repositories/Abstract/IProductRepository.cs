@@ -12,5 +12,6 @@ namespace IkinciElEsya.Repositories.Abstract
         List<Product> GetProductsByCategoryId(int categoryId);
         List<Product> GetProductsByUserId(string userId);
         List<Product> GetUserFavorites(string userId);
+        List<Product> SearchProducts(string searchTerm);
     }
 }

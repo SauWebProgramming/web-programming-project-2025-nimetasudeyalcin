@@ -28,38 +28,46 @@ namespace IkinciElEsya.Controllers
         // 1. LİSTELEME VE FİLTRELEME
         // Controllers/ProductController.cs içindeki Index metodu:
 
-        public IActionResult Index(int? categoryId)
+        // 1. LİSTELEME, FİLTRELEME VE ARAMA
+        public IActionResult Index(int? categoryId, string search)
         {
+            // Sidebar ve Favori işlemleri için gerekli veriler
             ViewBag.Categories = _categoryRepository.GetAllCategories();
             ViewBag.SelectedCategoryId = categoryId;
+            ViewBag.SearchTerm = search; // Arama kelimesini ekranda göstermek için
 
-            // --- FAVORİ KONTROLÜ (MEVCUT METODU KULLANARAK) ---
+            // --- FAVORİ KONTROLÜ ---
             if (User.Identity.IsAuthenticated)
             {
                 var userId = _userManager.GetUserId(User);
-
-                // 1. Mevcut metodu kullanarak favori ürünleri getir
                 var favProducts = _productRepository.GetUserFavorites(userId);
-
-                // 2. Bu ürünlerin sadece ID'lerini alıp listeye çevir (Örn: [1, 5, 8])
                 ViewBag.UserFavoriteIds = favProducts.Select(x => x.Id).ToList();
             }
             else
             {
                 ViewBag.UserFavoriteIds = new List<int>();
             }
-            // ----------------------------------------------------
+            // -----------------------
 
-            if (categoryId.HasValue)
+            List<Product> products;
+
+            // ARAMA YAPILDIYSA
+            if (!string.IsNullOrEmpty(search))
             {
-                var products = _productRepository.GetProductsByCategoryId(categoryId.Value);
-                return View(products);
+                products = _productRepository.SearchProducts(search);
             }
+            // KATEGORİ SEÇİLDİYSE
+            else if (categoryId.HasValue)
+            {
+                products = _productRepository.GetProductsByCategoryId(categoryId.Value);
+            }
+            // HİÇBİRİ YOKSA HEPSİNİ GETİR
             else
             {
-                var products = _productRepository.GetAllProducts();
-                return View(products);
+                products = _productRepository.GetAllProducts();
             }
+
+            return View(products);
         }
 
         // 2. EKLEME SAYFASI

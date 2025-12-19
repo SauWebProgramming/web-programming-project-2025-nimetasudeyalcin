@@ -70,5 +70,14 @@ namespace IkinciElEsya.Repositories.Concrete
                 .Where(p => _context.Favorites.Any(f => f.ProductId == p.Id && f.UserId == userId))
                 .ToList();
         }
+        public List<Product> SearchProducts(string searchTerm)
+        {
+            // Hem Başlıkta (Title) hem de Açıklamada (Description) arama yapar.
+            // ToLower() kullanarak büyük/küçük harf duyarlılığını kaldırıyoruz.
+            return _context.Products
+                .Include(x => x.Category)
+                .Where(x => x.Title.Contains(searchTerm) || x.Description.Contains(searchTerm))
+                .ToList();
+        }
     }
 }

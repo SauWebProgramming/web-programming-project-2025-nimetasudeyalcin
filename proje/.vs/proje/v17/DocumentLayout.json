@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{370C5D05-87D6-4402-9543-3548BC1E472B}|proje\\IkinciElEsya.csproj|c:\\users\\nimet\\documents\\github\\web-programming-project-2025-na-yalcin\\proje\\proje\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{370C5D05-87D6-4402-9543-3548BC1E472B}|proje\\IkinciElEsya.csproj|solutionrelative:proje\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{370C5D05-87D6-4402-9543-3548BC1E472B}|proje\\IkinciElEsya.csproj|c:\\users\\nimet\\documents\\github\\web-programming-project-2025-na-yalcin\\proje\\proje\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{370C5D05-87D6-4402-9543-3548BC1E472B}|proje\\IkinciElEsya.csproj|solutionrelative:proje\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{370C5D05-87D6-4402-9543-3548BC1E472B}|proje\\IkinciElEsya.csproj|c:\\users\\nimet\\documents\\github\\web-programming-project-2025-na-yalcin\\proje\\proje\\repositories\\concrete\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{370C5D05-87D6-4402-9543-3548BC1E472B}|proje\\IkinciElEsya.csproj|solutionrelative:proje\\repositories\\concrete\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{370C5D05-87D6-4402-9543-3548BC1E472B}|proje\\IkinciElEsya.csproj|c:\\users\\nimet\\documents\\github\\web-programming-project-2025-na-yalcin\\proje\\proje\\repositories\\abstract\\iproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{370C5D05-87D6-4402-9543-3548BC1E472B}|proje\\IkinciElEsya.csproj|solutionrelative:proje\\repositories\\abstract\\iproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{370C5D05-87D6-4402-9543-3548BC1E472B}|proje\\IkinciElEsya.csproj|c:\\users\\nimet\\documents\\github\\web-programming-project-2025-na-yalcin\\proje\\proje\\ikincielesya.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
       "RelativeMoniker": "D:0:0:{370C5D05-87D6-4402-9543-3548BC1E472B}|proje\\IkinciElEsya.csproj|solutionrelative:proje\\ikincielesya.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
@@ -22,11 +38,67 @@
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "proje\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "proje\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwDgAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-19T15:54:15.323Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "proje\\Controllers\\ProductController.cs",
+              "ToolTip": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "proje\\Controllers\\ProductController.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAQwEYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T15:53:11.282Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductRepository.cs",
+              "DocumentMoniker": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\Repositories\\Concrete\\ProductRepository.cs",
+              "RelativeDocumentMoniker": "proje\\Repositories\\Concrete\\ProductRepository.cs",
+              "ToolTip": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\Repositories\\Concrete\\ProductRepository.cs",
+              "RelativeToolTip": "proje\\Repositories\\Concrete\\ProductRepository.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAkwFAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T15:52:45.192Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IProductRepository.cs",
+              "DocumentMoniker": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\Repositories\\Abstract\\IProductRepository.cs",
+              "RelativeDocumentMoniker": "proje\\Repositories\\Abstract\\IProductRepository.cs",
+              "ToolTip": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\Repositories\\Abstract\\IProductRepository.cs",
+              "RelativeToolTip": "proje\\Repositories\\Abstract\\IProductRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T15:52:17.318Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "IkinciElEsya.csproj",
               "DocumentMoniker": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\IkinciElEsya.csproj",
               "RelativeDocumentMoniker": "proje\\IkinciElEsya.csproj",
@@ -34,12 +106,11 @@
               "RelativeToolTip": "proje\\IkinciElEsya.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-12-03T16:12:50.596Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-03T16:12:50.596Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "IkinciElEsya",
               "DocumentMoniker": "C:\\Users\\nimet\\Documents\\GitHub\\web-programming-project-2025-na-yalcin\\proje\\proje\\IkinciElEsya.csproj",
               "RelativeDocumentMoniker": "proje\\IkinciElEsya.csproj",
